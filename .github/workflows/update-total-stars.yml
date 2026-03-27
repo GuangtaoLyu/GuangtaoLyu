@@ -1,0 +1,66 @@
+name: Update Total Stars
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # 每周日 00:00 UTC 自动运行
+  workflow_dispatch:     # 支持手动触发
+
+jobs:
+  update-stars:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Calculate Total Stars
+        id: calc
+        run: |
+          TOTAL_STARS=0
+          PAGE=1
+          
+          while true; do
+            RESPONSE=$(curl -s "https://api.github.com/users/GuangtaoLyu/repos?per_page=100&page=$PAGE")
+            
+            if [ "$(echo $RESPONSE | jq 'length')" -eq 0 ]; then
+              break
+            fi
+            
+            STARS=$(echo $RESPONSE | jq '[.[] | select(.fork == false) | .stargazers_count] | add // 0')
+            TOTAL_STARS=$((TOTAL_STARS + STARS))
+            PAGE=$((PAGE + 1))
+            
+            if [ $PAGE -gt 10 ]; then
+              break
+            fi
+          done
+          
+          echo "✅ Calculated total stars: $TOTAL_STARS"
+          echo "total_stars=$TOTAL_STARS" >> $GITHUB_OUTPUT
+      
+      - name: Update README.md
+        run: |
+          if grep -q "{{TOTAL_STARS}}" README.md; then
+            sed -i "s/{{TOTAL_STARS}}/${{ steps.calc.outputs.total_stars }}/g" README.md
+            echo "🔄 Updated README with new star count"
+          else
+            echo "⚠️  Warning: {{TOTAL_STARS}} placeholder not found in README.md"
+          fi
+      
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          if ! git diff --quiet README.md; then
+            git add README.md
+            git commit -m "chore: update total stars to ${{ steps.calc.outputs.total_stars }} ✨"
+            git push
+            echo "✅ Successfully pushed updated README"
+          else
+            echo "ℹ️  No changes to commit"
+          fi
