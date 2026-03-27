@@ -22,18 +22,6 @@
 ---
 
 
-
-<<<<<<< HEAD
-<!-- 总 Star 徽章（占位符 66 会被 Actions 自动替换） -->
-[![Total Stars](https://img.shields.io/badge/⭐%20Total%20Stars-66-blue?style=flat-square&logo=github)](https://github.com/GuangtaoLyu?tab=repositories)
-
-<p align="center">
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=guangtaolyu&theme=radical"/>
-</p>
-=======
-## 📊 GitHub Stats
->>>>>>> docs: update
-
 <div align="center">
   <!-- 第一行：核心指标（紧凑排列） -->
   <img src="https://api.visitorbadge.io/api/visitors?path=GuangtaoLyu%2FGuangtaoLyu&label=👁️%20Views&countColor=%232ccce4&style=for-the-badge" height="28"/>
