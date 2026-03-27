@@ -27,8 +27,6 @@
   <!-- 访客统计 -->
   <img src="https://api.visitorbadge.io/api/visitors?path=GuangtaoLyu%2FGuangtaoLyu&label=PROFILE%20VIEWS&countColor=%232ccce4&style=flat-square&labelStyle=upper" alt="Visitors"/>
   
-  <!-- GitHub Stats: Stars + Followers -->
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=guangtaolyu&theme=radical" alt="Stars"/>
   <img src="https://img.shields.io/github/followers/GuangtaoLyu?style=flat-square&logo=github&label=Followers&color=green" alt="Followers"/>
 </p>
 
@@ -36,7 +34,7 @@
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=guangtaolyu&theme=radical"/>
 </p>
 
-<!-- 可选：更详细的个人统计卡片（折叠起来保持简洁） -->
+<!-- 可选：更详细的个人统计卡片（折叠起来保持简洁）
 <details>
 <summary><b>📈 More GitHub Analytics</b></summary>
 <br>
@@ -44,6 +42,6 @@
   <img src="https://github-readme-stats.vercel.app/api?username=guangtaolyu&show_icons=true&theme=radical&hide_title=true&count_private=true&hide_rank=false" height="140"/>
   <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=guangtaolyu&layout=compact&theme=radical&hide_title=true" height="140"/>
 </p>
-</details>
+</details> -->
 
 ---
