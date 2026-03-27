@@ -26,8 +26,8 @@
   <!-- 第一行：核心指标（紧凑排列） -->
   <img src="https://api.visitorbadge.io/api/visitors?path=GuangtaoLyu%2FGuangtaoLyu&label=👁️%20Views&countColor=%232ccce4&style=for-the-badge" height="28"/>
   <img src="https://img.shields.io/github/followers/GuangtaoLyu?style=for-the-badge&logo=github&label=👥%20Followers&color=2ea44f" height="28"/>
-  <!-- ✅ 关键：保留 {{TOTAL_STARS}} 占位符，Actions 会自动替换它 -->
-  <img src="https://img.shields.io/badge/⭐%20Total%20Stars-{{TOTAL_STARS}}-FFD93D?style=for-the-badge&logo=github" height="28"/>
+  <!-- ✅ 关键：保留 66 占位符，Actions 会自动替换它 -->
+  <img src="https://img.shields.io/badge/⭐%20Total%20Stars-66-FFD93D?style=for-the-badge&logo=github" height="28"/>
 
   <!-- 第二行：详细统计卡片 -->
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=guangtaolyu&theme=radical" height="180"/>
