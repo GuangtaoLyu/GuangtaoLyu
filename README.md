@@ -2,7 +2,7 @@
 
 > 🎓 Second-year PHD Student @ **Xidian University**  
 > 👨‍🏫 Advisor: Prof. [Cheng Deng](https://scholar.google.com/citations?user=xxx)  
-> 🔬 Research: **MLLM Reasoning** | **MLLM Hallucination** | **Human Motion Generation and Understanding**
+> 🔬 Research: **MLLM** | **Human Motion Generation and Understanding**
 
 ---
 
