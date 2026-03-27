@@ -28,8 +28,12 @@
   <img src="https://api.visitorbadge.io/api/visitors?path=GuangtaoLyu%2FGuangtaoLyu&label=PROFILE%20VIEWS&countColor=%232ccce4&style=flat-square&labelStyle=upper" alt="Visitors"/>
   
   <!-- GitHub Stats: Stars + Followers -->
-  <img src="https://img.shields.io/github/stars/GuangtaoLyu/GuangtaoLyu?style=flat-square&logo=github&label=Repo%20Stars&color=yellow" alt="Stars"/>
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=guangtaolyu&theme=radical" alt="Stars"/>
   <img src="https://img.shields.io/github/followers/GuangtaoLyu?style=flat-square&logo=github&label=Followers&color=green" alt="Followers"/>
+</p>
+
+<p align="center">
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=guangtaolyu&theme=radical"/>
 </p>
 
 <!-- 可选：更详细的个人统计卡片（折叠起来保持简洁） -->
