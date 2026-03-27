@@ -35,8 +35,6 @@
 
 <!-- 第二行：详细统计卡片 -->
 <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=guangtaolyu&theme=radical" height="180"/>
-
->>>>>>> docs: update
 </div>
 
 ---
