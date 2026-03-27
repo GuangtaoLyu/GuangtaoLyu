@@ -37,14 +37,5 @@
   <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=guangtaolyu&theme=radical"/>
 </p>
 
-<!-- 可选：更详细的个人统计卡片（折叠起来保持简洁）
-<details>
-<summary><b>📈 More GitHub Analytics</b></summary>
-<br>
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=guangtaolyu&show_icons=true&theme=radical&hide_title=true&count_private=true&hide_rank=false" height="140"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=guangtaolyu&layout=compact&theme=radical&hide_title=true" height="140"/>
-</p>
-</details> -->
 
 ---
