@@ -2,65 +2,122 @@ name: Update Total Stars
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # 每周日 00:00 UTC 自动运行
-  workflow_dispatch:     # 支持手动触发
+    # 每周日凌晨 00:00 UTC（北京时间周日 08:00）自动运行
+    - cron: '0 0 * * 0'
+  workflow_dispatch:  # 支持手动触发：Actions → Run workflow
 
 jobs:
   update-stars:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: write  # 允许推送修改到 README
     
     steps:
+      # 1️⃣ 检出代码
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
       
+      # 2️⃣ 计算总 Star 数（增强错误处理版）
       - name: Calculate Total Stars
         id: calc
         run: |
+          # 初始化变量
           TOTAL_STARS=0
           PAGE=1
+          MAX_PAGES=10
           
-          while true; do
-            RESPONSE=$(curl -s "https://api.github.com/users/GuangtaoLyu/repos?per_page=100&page=$PAGE")
+          echo "🔍 Fetching repositories for GuangtaoLyu..."
+          
+          # 分页获取所有公开仓库
+          while [ $PAGE -le $MAX_PAGES ]; do
+            echo "📄 Fetching page $PAGE..."
             
-            if [ "$(echo $RESPONSE | jq 'length')" -eq 0 ]; then
+            # 调用 GitHub API（只获取 owner 的公开仓库）
+            RESPONSE=$(curl -s -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/users/GuangtaoLyu/repos?per_page=100&page=$PAGE&type=owner")
+            
+            # 检查是否是有效的 JSON 数组
+            if ! echo "$RESPONSE" | jq -e 'type == "array"' > /dev/null 2>&1; then
+              echo "⚠️  Warning: Invalid JSON response, stopping pagination"
               break
             fi
             
-            STARS=$(echo $RESPONSE | jq '[.[] | select(.fork == false) | .stargazers_count] | add // 0')
-            TOTAL_STARS=$((TOTAL_STARS + STARS))
+            # 检查数组是否为空
+            REPO_COUNT=$(echo "$RESPONSE" | jq 'length')
+            if [ "$REPO_COUNT" -eq 0 ]; then
+              echo "✅ No more repositories found"
+              break
+            fi
+            
+            echo "📦 Found $REPO_COUNT repositories on page $PAGE"
+            
+            # 累加非 fork 仓库的 star 数（增强容错）
+            PAGE_STARS=$(echo "$RESPONSE" | jq '
+              [.[] | 
+                select(type == "object") | 
+                select(.fork == false) | 
+                .stargazers_count // 0
+              ] | add // 0
+            ')
+            
+            TOTAL_STARS=$((TOTAL_STARS + PAGE_STARS))
+            echo "   ⭐ Added $PAGE_STARS stars (Running total: $TOTAL_STARS)"
+            
+            # 如果返回数 < 100，说明是最后一页
+            if [ "$REPO_COUNT" -lt 100 ]; then
+              echo "✅ Reached last page"
+              break
+            fi
+            
             PAGE=$((PAGE + 1))
-            
-            if [ $PAGE -gt 10 ]; then
-              break
-            fi
+            sleep 1  # 避免 API 限流
           done
           
-          echo "✅ Calculated total stars: $TOTAL_STARS"
+          echo "✅ Final total stars: $TOTAL_STARS"
           echo "total_stars=$TOTAL_STARS" >> $GITHUB_OUTPUT
+          
+          # 输出到日志，方便调试
+          echo "⭐ TOTAL_STARS=$TOTAL_STARS" >> $GITHUB_STEP_SUMMARY
       
+      # 3️⃣ 更新 README.md 中的占位符
       - name: Update README.md
         run: |
+          echo "🔍 Checking README.md for {{TOTAL_STARS}} placeholder..."
+          
           if grep -q "{{TOTAL_STARS}}" README.md; then
+            echo "✅ Found placeholder, updating..."
+            
+            # 替换占位符为真实数字
             sed -i "s/{{TOTAL_STARS}}/${{ steps.calc.outputs.total_stars }}/g" README.md
-            echo "🔄 Updated README with new star count"
+            
+            echo "🔄 Replaced {{TOTAL_STARS}} with ${{ steps.calc.outputs.total_stars }}"
           else
             echo "⚠️  Warning: {{TOTAL_STARS}} placeholder not found in README.md"
+            echo "   Please ensure your README contains: -{{TOTAL_STARS}}-"
+            exit 0  # 不报错退出，避免工作流失败
           fi
       
+      # 4️⃣ 提交并推送更改
       - name: Commit and Push Changes
         run: |
+          # 配置 Git 用户（使用 github-actions bot）
           git config --local user.name "github-actions[bot]"
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           
+          # 检查是否有实际变更
           if ! git diff --quiet README.md; then
+            echo "📝 Changes detected, committing..."
+            
             git add README.md
-            git commit -m "chore: update total stars to ${{ steps.calc.outputs.total_stars }} ✨"
-            git push
-            echo "✅ Successfully pushed updated README"
+            git commit -m "chore: update total stars to ${{ steps.calc.outputs.total_stars }} ✨ [skip ci]"
+            
+            echo "🚀 Pushing to main branch..."
+            git push origin main
+            
+            echo "✅ Successfully updated README with new star count!"
           else
-            echo "ℹ️  No changes to commit"
+            echo "ℹ️  No changes to README.md, skipping commit"
           fi
