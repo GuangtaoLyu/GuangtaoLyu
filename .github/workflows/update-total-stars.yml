@@ -20,7 +20,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
       
-      # 2️⃣ 计算总 Star 数（增强错误处理版）
+      # 2️⃣ 计算总 Star 数
       - name: Calculate Total Stars
         id: calc
         run: |
@@ -82,23 +82,16 @@ jobs:
           # 输出到日志，方便调试
           echo "⭐ TOTAL_STARS=$TOTAL_STARS" >> $GITHUB_STEP_SUMMARY
       
-      # 3️⃣ 更新 README.md 中的占位符
+      # 3️⃣ 更新 README.md 中的数字（支持反复更新）
       - name: Update README.md
         run: |
-          echo "🔍 Checking README.md for {{TOTAL_STARS}} placeholder..."
+          echo "🔍 Checking README.md for Total Stars badge..."
           
-          if grep -q "{{TOTAL_STARS}}" README.md; then
-            echo "✅ Found placeholder, updating..."
-            
-            # 替换占位符为真实数字
-            sed -i "s/{{TOTAL_STARS}}/${{ steps.calc.outputs.total_stars }}/g" README.md
-            
-            echo "🔄 Replaced {{TOTAL_STARS}} with ${{ steps.calc.outputs.total_stars }}"
-          else
-            echo "⚠️  Warning: {{TOTAL_STARS}} placeholder not found in README.md"
-            echo "   Please ensure your README contains: -{{TOTAL_STARS}}-"
-            exit 0  # 不报错退出，避免工作流失败
-          fi
+          # 🔑 关键：用正则匹配任意数字，支持反复更新
+          # 匹配模式：/badge/⭐%20Total%20Stars-XXX-FFD93D（XXX 是任意数字）
+          sed -i "s|/badge/⭐%20Total%20Stars-[0-9]\+-FFD93D|/badge/⭐%20Total%20Stars-${{ steps.calc.outputs.total_stars }}-FFD93D|g" README.md
+          
+          echo "🔄 Updated total stars to ${{ steps.calc.outputs.total_stars }}"
       
       # 4️⃣ 提交并推送更改
       - name: Commit and Push Changes

@@ -20,21 +20,23 @@
 - *2022.03* ✅ Paper accepted by **ICME 2022**
 
 ---
+
 ## 📊 GitHub Stats
 
 <div align="center">
 
-<!-- 第一行：核心指标（紧凑排列） -->
-<img src="https://api.visitorbadge.io/api/visitors?path=GuangtaoLyu%2FGuangtaoLyu&label=👁️%20Views&countColor=%232ccce4&style=for-the-badge" height="28"/>
-<img src="https://img.shields.io/github/followers/GuangtaoLyu?style=for-the-badge&logo=github&label=👥%20Followers&color=2ea44f" height="28"/>
+<!-- 核心指标 - 使用稳定服务 -->
+<img src="https://komarev.com/ghpvc/?username=guangtaolyu&label=👁️%20Views&color=0e75b6&style=for-the-badge" height="28" alt="profile views"/>
 
-<!-- ✅ 关键：保留 66 占位符，Actions 会自动替换它 -->
-<img src="https://img.shields.io/badge/⭐%20Total%20Stars-66-FFD93D?style=for-the-badge&logo=github" height="28"/>
+<img src="https://img.shields.io/github/followers/GuangtaoLyu?style=for-the-badge&logo=github&label=👥%20Followers&color=2ea44f" height="28" alt="followers"/>
+
+<img src="https://img.shields.io/badge/⭐%20Total%20Stars-66-FFD93D?style=for-the-badge&logo=github" height="28" alt="total stars"/>
 
 <br/><br/>
 
-<!-- 第二行：详细统计卡片 -->
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=guangtaolyu&theme=radical" height="180"/>
+<!-- 详细统计卡片 -->
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=guangtaolyu&theme=radical" height="180" alt="profile summary"/>
+
 </div>
 
 ---
