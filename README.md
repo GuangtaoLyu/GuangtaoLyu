@@ -28,7 +28,7 @@
 <!-- 核心指标 - 使用稳定服务 -->
 <img src="https://komarev.com/ghpvc/?username=guangtaolyu&label=👁️%20Views&color=0e75b6&style=for-the-badge" height="28" alt="profile views"/>
 
-<img src="https://img.shields.io/github/followers/GuangtaoLyu?style=for-the-badge&logo=github&label=👥%20Followers&color=2ea44f" height="28" alt="followers"/>
+<img src="https://img.shields.io/github/followers/GuangtaoLyu?style=for-the-badge&logo=github&label=%F0%9F%91%A5+Followers&color=2ea44f" height="28" alt="followers"/>
 
 <img src="https://img.shields.io/badge/⭐%20Total%20Stars-66-FFD93D?style=for-the-badge&logo=github" height="28" alt="total stars"/>
 
