@@ -1,7 +1,7 @@
 # 👋 Hi, I'm Guangtao Lyu (吕光涛)
 
 > 🎓 Second-year PHD Student @ **Xidian University**  
-> 👨‍🏫 Advisor: Prof. [Cheng Deng](https://scholar.google.com/citations?user=xxx)  
+> 👨‍🏫 Advisor: Prof. [Cheng Deng](https://scholar.google.com/citations?user=OROjmc8AAAAJ&hl=zh-CN)  
 > 🔬 Research: **MLLM** | **Human Motion Generation and Understanding**
 
 ---
