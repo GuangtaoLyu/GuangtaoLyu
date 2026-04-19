@@ -30,7 +30,7 @@
 
 <img src="https://img.shields.io/github/followers/GuangtaoLyu?style=for-the-badge&logo=github&label=%F0%9F%91%A5+Followers&color=2ea44f" height="28" alt="followers"/>
 
-<img src="https://img.shields.io/badge/⭐%20Total%20Stars-78-FFD93D?style=for-the-badge&logo=github" height="28" alt="total stars"/>
+<img src="https://img.shields.io/badge/⭐%20Total%20Stars-81-FFD93D?style=for-the-badge&logo=github" height="28" alt="total stars"/>
 
 <br/><br/>
 
