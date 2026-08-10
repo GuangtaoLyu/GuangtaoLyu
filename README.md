@@ -14,7 +14,7 @@
 ---
 
 ## 🔥 Latest News
-GestureOPD. gestureopd
+- *2026.08* gestureopd
 - *2026.08* ✅ Paper accepted by **ACMMM 2026**
 - *2026.04* ✅ Paper accepted by **ACL Findings 2026**
 - *2025.04* ✅ Paper accepted by **ICLR 2025**
